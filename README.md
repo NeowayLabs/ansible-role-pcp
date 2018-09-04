@@ -1,7 +1,7 @@
 ansible-role-pcp
 =========
 
-[![Build Status](https://travis-ci.org/neowaylabs/ansible-role-pcp.svg?branch=master)](https://travis-ci.org/neowaylabs/ansible-role-pcp)
+[![Build Status](https://travis-ci.org/NeowayLabs/ansible-role-pcp.svg?branch=master)](https://travis-ci.org/NeowayLabs/ansible-role-pcp)
 
 Installs Performance-Copilot (PCP).
 
