@@ -1,0 +1,16 @@
+---
+service:
+  pmwebd:
+    enabled: true
+    running: true
+port:
+  tcp:44323:
+    listening: true
+    ip:
+      - 0.0.0.0
+http:
+  http://localhost:44323/pmapi/context?hostspec=localhost&polltimeout=600:
+    status: 200
+    timeout: 600
+    body:
+      - "context"

@@ -1,0 +1,10 @@
+---
+service:
+  pmcd:
+    enabled: true
+    running: true
+port:
+  tcp:44321:
+    listening: true
+    ip:
+      - 0.0.0.0

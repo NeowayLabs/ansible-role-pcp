@@ -1,0 +1,13 @@
+---
+# tasks file for ansible-role-pcp
+- name: ensure distro is supported
+  get_url:
+    url: "https://dl.bintray.com/pcp/{{ ansible_distribution_release}}/dists/{{ ansible_distribution_release }}/Release"
+    dest: /dev/null
+  register: distrosupported
+  tags: pcp
+
+- name: import Ubuntu.yml specific tasks
+  import_tasks: Ubuntu.yml
+  when: distrosupported is succeeded and ansible_distribution == 'Ubuntu'
+  tags: pcp

@@ -1,0 +1,38 @@
+---
+# tasks file for ansible-role-pcp
+- name: ensure install the Performance Co-Pilot APT key
+  apt_key:
+    url: "https://bintray.com/user/downloadSubjectPublicKey?username=pcp"
+    state: present
+  tags: pcp
+
+- name: ensure install apt-transport-https
+  apt:
+    pkg: apt-transport-https
+    state: present
+  tags: pcp
+
+- name: ensure install the Performance Co-Pilot APT repository
+  apt_repository:
+    repo: "deb https://dl.bintray.com/pcp/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main"
+    state: present
+  tags: pcp
+
+- name: ensure install the Performance Co-Pilot packages
+  apt:
+    pkg: "{{ item }}={{ pcp_version }}"
+    state: present
+  with_items:
+    - pcp
+    - pcp-webapi
+  tags: pcp
+
+- name: ensure start and run on startup the Performance Co-Pilot daemons
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - pmwebd
+    - pmcd
+  tags: pcp
