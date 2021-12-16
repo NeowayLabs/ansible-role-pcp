@@ -37,4 +37,4 @@ MIT
 Author Information
 ------------------
 
-NeowayLabs <blackops@neoway.com.br>
+NeowayLabs
